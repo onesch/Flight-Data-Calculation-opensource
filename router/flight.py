@@ -7,8 +7,8 @@ class Flight:
     def __init__(self, dep_icao: str, arr_icao: str, aircraft_icao: str):
         self.aircraft = Aircraft(aircraft_icao)
         self.aircraft_data = self.aircraft.data[self.aircraft.aircraft_icao]
-        self.airport1 = Airport(dep_icao)
-        self.airport2 = Airport(arr_icao)
+        self.dep_airport = Airport(dep_icao)
+        self.arr_airport = Airport(arr_icao)
         self.distance_km: float = 0.0
         self.block_fuel: float = 0.0
         self.payload: int = 0
@@ -21,6 +21,16 @@ class Flight:
         self.block_fuel = self.calculate_block_fuel()
         self.payload = self.calculate_payload()
         self.cargo = self.calculate_cargo()
+        self.print_flight_params()
+
+    def print_flight_params(self) -> None:
+        """Prints the flight parameters."""
+        print(f"\n{self.dep_airport.icao_code} {self.dep_airport.latitude} {self.dep_airport.longitude}")
+        print(self.arr_airport.icao_code, self.arr_airport.latitude, self.arr_airport.longitude)
+        print(f"Distance: {self.distance_km:.0f} km")
+        print(f"Block Fuel: {self.block_fuel:.0f} kg")
+        print(f"Payload: {self.payload} kg")
+        print(f"Cargo: {self.cargo:.0f} kg \n")
 
     def _haversine_distance(
         self, lat1: float, lon1: float, lat2: float, lon2: float
@@ -66,7 +76,6 @@ class Flight:
         distance_100km = self._distance_100km()
         block_fuel = fuel_on_100km * distance_100km
 
-        print(f"Block_fuel: {block_fuel:.0f} kg\n")
         return block_fuel
 
     def calculate_distance_km(self) -> float:
@@ -74,12 +83,12 @@ class Flight:
         Calculates the distance between two airports.
         """
         distance_km = self._haversine_distance(
-            self.airport1.latitude,
-            self.airport1.longitude,
-            self.airport2.latitude,
-            self.airport2.longitude,
+            self.dep_airport.latitude,
+            self.dep_airport.longitude,
+            self.arr_airport.latitude,
+            self.arr_airport.longitude,
         )
-        print(f"Distance: {distance_km:.0f} km\n")
+
         return distance_km
 
     def calculate_payload(self) -> int:
@@ -91,7 +100,6 @@ class Flight:
         passenger = 104
         payload = passengers_count * passenger
 
-        print(f"Payload: {payload} kg\n")
         return payload
 
     def calculate_cargo(self) -> float:
@@ -102,5 +110,4 @@ class Flight:
         cargo_per_passenger = 3.5
         cargo = self.payload * cargo_per_passenger / 14
 
-        print(f"Cargo: {cargo:.0f} kg")
         return cargo
