@@ -1,0 +1,11 @@
+{
+    "a320": {
+        "ZWF": {"EMP": 43780, "MAX": 62500},
+        "Passengers": {"MAX": 180},
+        "Payload": {"MAX": 18720},
+        "FuelOn100km": {"MAX": 2700},
+        "rangeflight": {"MAX": 6150},
+        "TOW": {"MAX": 78000},
+        "LW": {"MAX": 66000}
+    }
+}

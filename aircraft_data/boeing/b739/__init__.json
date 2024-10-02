@@ -1,0 +1,11 @@
+{
+    "b739": {
+        "ZWF": {"EMP": 45482, "MAX": 67721},
+        "Passengers": {"MAX": 189},
+        "Payload": {"MAX": 22239},
+        "FuelOn100km": {"MAX": 3500},
+        "rangeflight": {"MAX": 5800},
+        "TOW": {"MAX": 85139},
+        "LW": {"MAX": 71350}
+    }
+}
