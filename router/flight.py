@@ -13,6 +13,14 @@ class Flight:
         self.block_fuel: float = 0.0
         self.payload: int = 0
         self.cargo: float = 0.0
+        self.passengers_count: int = 0
+        self.empty_weight: float = 0.0
+        self.estimated_zfw: float = 0.0
+        self.max_zfw: float = 0.0
+        self.estimated_tow: float = 0.0
+        self.max_tow: float = 0.0
+        self.estimated_lw: float = 0.0
+        self.max_lw: float = 0.0
         self.calculate_flight_params()
 
     def calculate_flight_params(self) -> None:
@@ -21,16 +29,26 @@ class Flight:
         self.block_fuel = self.calculate_block_fuel()
         self.payload = self.calculate_payload()
         self.cargo = self.calculate_cargo()
+        self.estimated_zfw = self.calculate_zfw()
+        self.estimated_tow = self.calculate_tow()
+        self.estimated_lw = self.calculate_lw()
         self.print_flight_params()
 
     def print_flight_params(self) -> None:
         """Prints the flight parameters."""
-        print(f"\n{self.dep_airport.icao_code} {self.dep_airport.latitude} {self.dep_airport.longitude}")
-        print(self.arr_airport.icao_code, self.arr_airport.latitude, self.arr_airport.longitude)
-        print(f"Distance: {self.distance_km:.0f} km")
-        print(f"Block Fuel: {self.block_fuel:.0f} kg")
-        print(f"Payload: {self.payload} kg")
-        print(f"Cargo: {self.cargo:.0f} kg \n")
+        print(
+            f"\nAircraft: {self.aircraft.aircraft_icao}",
+            f"\n{self.dep_airport.icao_code} lat:{self.dep_airport.latitude}, lon:{self.dep_airport.longitude}",
+            f"\n{self.arr_airport.icao_code} lat:{self.arr_airport.latitude}, lon:{self.arr_airport.longitude}",
+            f"\nDistance: {self.distance_km:.0f} km\n",
+            f"\nPassengers [max]: {self.passengers_count}",
+            f"\nBlock Fuel: {self.block_fuel:.0f} kg",
+            f"\nPayload: {self.payload} kg",
+            f"\nCargo: {self.cargo:.0f} kg\n",
+            f"\nZFW est:{self.estimated_zfw:.0f}, max:{self.max_zfw:.0f}",
+            f"\nTOW est:{self.estimated_tow:.0f}, max:{self.max_tow:.0f}",
+            f"\nLW est:{self.estimated_lw:.0f}, max:{self.max_lw:.0f}\n"
+        )
 
     def _haversine_distance(
         self, lat1: float, lon1: float, lat2: float, lon2: float
@@ -96,9 +114,9 @@ class Flight:
         Calculates the total payload on
         board based on the number of passengers.
         """
-        passengers_count = int(self.aircraft_data["Passengers"]["MAX"])
+        self.passengers_count = int(self.aircraft_data["Passengers"]["MAX"])
         passenger = 104
-        payload = passengers_count * passenger
+        payload = self.passengers_count * passenger
 
         return payload
 
@@ -111,3 +129,54 @@ class Flight:
         cargo = self.payload * cargo_per_passenger / 14
 
         return cargo
+
+    def calculate_zfw(self) -> float:
+        """
+        Calculates the estimated Zero Fuel Weight (ZFW).
+
+        ZFW is the total weight of the aircraft without any fuel on board. 
+        It is calculated as the sum of the empty weight and the payload.
+
+        Returns:
+            float: Estimated ZFW in kilograms.
+        """
+        self.empty_weight = float(self.aircraft_data["ZWF"]["EMP"])
+        self.max_zfw = float(self.aircraft_data["ZWF"]["MAX"])
+        estimated_zfw = self.payload + self.empty_weight
+
+        return estimated_zfw
+
+    def calculate_tow(self) -> float:
+        """
+        Calculates the estimated Takeoff Weight (TOW).
+
+        TOW is the total weight of the aircraft at the time of takeoff. 
+        It includes the empty weight, block fuel, and payload.
+
+        Returns:
+            float: Estimated TOW in kilograms.
+        """
+        self.max_tow = float(self.aircraft_data["TOW"]["MAX"])
+        estimated_tow = (
+            self.empty_weight
+            + self.block_fuel
+            + self.payload
+        )
+
+        return estimated_tow
+
+    def calculate_lw(self) -> float:
+        """
+        Calculates the estimated Landing Weight (LW).
+
+        LW is the total weight of the aircraft upon landing. 
+        It is calculated as the estimated TOW minus the block fuel
+        and includes the cargo weight.
+
+        Returns:
+            float: Estimated LW in kilograms.
+        """
+        self.max_lw = float(self.aircraft_data["LW"]["MAX"])
+        estimated_lw = self.estimated_tow - self.block_fuel + self.cargo
+
+        return estimated_lw
