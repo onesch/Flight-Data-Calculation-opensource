@@ -27,11 +27,11 @@
 ├── .env.example                     # Example environment variables file.
 ├── .gitignore                       # Specifies files and directories to ignore in Git.
 ├── example_code.py                  # Example code demonstrating the project's functionality.
-├── LICENSE                          # License file for the project.
-├── Makefile                         # File for managing build automation.
+├── LIСЕNSE                          # License file for the project.
+├── Mаkеfile                         # File for managing build automation.
 ├── poetry.lock                      # File listing the exact versions of dependencies.
 ├── pyproject.toml                   # Configuration file for Poetry and project metadata.
-└── README.md                        # Documentation file explaining the project.
+└── RЕADME.md                        # Documentation file explaining the project.
 ```
 
 ## Version
