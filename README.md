@@ -15,7 +15,7 @@
                                              ▏         LW est:65602, max:66361
 ```
 
-```python
+```php
 .
 ├── src/                             # Main directory for the project's source code.
 │   ├── aircraft_data/               # Directory for aircraft data.
@@ -41,7 +41,7 @@
 
 ## Installation
 Clone the repository:
-```python
+```ts
 git clone https://github.com/onesch/Flight-Data-Calculation-opensource.git
 ```
 Install dependencies:
