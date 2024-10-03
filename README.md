@@ -1,6 +1,19 @@
 ## Usage
-![image](/examples/example_code.png "")
-![image](/examples/example_input.png "")
+```ts
+                                             ▏         Aircraft: b738 
+                                             ▏         ULLI lat:59.800301, lon:30.262501
+                                             ▏         UUEE lat:55.972599, lon:37.4146 
+   from src.models.flight import Flight      ▏         Distance: 599 km
+                                             ▏
+   flight = Flight(                          ▏         Flight Passengers [max]: 184 
+       dep_icao="ulli",                      ▏         Block Fuel: 6992 kg 
+       arr_icao="uuee",                      ▏         Payload: 19136 kg
+       aircraft_icao="b738"                  ▏         Cargo: 4784 kg
+   )                                         ▏  
+                                             ▏         ZFW est:60818, max:62732 
+                                             ▏         TOW est:67810, max:79016
+                                             ▏         LW est:65602, max:66361
+```
 
 ```python
 .
