@@ -1,4 +1,4 @@
-from router.flight import Flight
+from src.models.flight import Flight
 
 flight = Flight(
     dep_icao="ulli",

@@ -9,4 +9,7 @@ __pycache__/
 .env
 
 # Experimental folder
-dev/
+.dev/
+
+# Pytest cache folder
+.pytest_cache/

@@ -1,9 +1,23 @@
 from math import radians, sin, cos, sqrt, atan2
-from router.airport import Airport
-from router.aircraft import Aircraft
+from src.models.airport import Airport
+from src.models.aircraft import Aircraft
 
 
 class Flight:
+    """
+    Represents a flight from a departure airport to
+    an arrival airport using a specific aircraft.
+    The class calculates various flight parameters based on the
+    provided ICAO codes of the departure and arrival airports, 
+    as well as the aircraft. These parameters include distance,
+    block fuel, payload, and weights (ZFW, TOW, and LW).
+
+    Args:
+        dep_icao (str): ICAO code of the departure airport.
+        arr_icao (str): ICAO code of the arrival airport.
+        aircraft_icao (str): ICAO code of the
+            aircraft being used for the flight.
+    """
     def __init__(self, dep_icao: str, arr_icao: str, aircraft_icao: str):
         self.aircraft = Aircraft(aircraft_icao)
         self.aircraft_data = self.aircraft.data[self.aircraft.aircraft_icao]
