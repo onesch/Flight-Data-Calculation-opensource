@@ -36,7 +36,7 @@
 
 ## Version
 ```python
-3.0.0
+3.0.1
 ```
 
 ## Installation
