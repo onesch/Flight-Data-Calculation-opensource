@@ -1,3 +1,8 @@
+A project that allows you to plan a flight between two airports and obtain flight parameters for the selected aircraft.
+![version](https://img.shields.io/badge/version-3.0.1-blue)
+![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+![coverage](https://img.shields.io/badge/coverage-98%25-green)
+
 ## Usage
 ```ts
                                              ▏         Aircraft: b738 
@@ -14,7 +19,7 @@
                                              ▏         TOW est:67810, max:79016
                                              ▏         LW est:65602, max:66361
 ```
-
+## Tree
 ```php
 .
 ├── src/                             # Main directory for the project's source code.
@@ -32,11 +37,6 @@
 ├── poetry.lock                      # File listing the exact versions of dependencies.
 ├── pyproject.toml                   # Configuration file for Poetry and project metadata.
 └── README.md                        # Documentation file explaining the project.
-```
-
-## Version
-```python
-3.0.1
 ```
 
 ## Installation
@@ -58,8 +58,8 @@ poetry run python example_code.py
 pytest -vv
 ```
 ```python
-poetry run coverage run -m pytest
+coverage run -m pytest
 ```
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+```python
+coverage report
+```
