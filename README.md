@@ -64,3 +64,6 @@ coverage run -m pytest
 ```python
 coverage report
 ```
+
+## Note
+The project was created for aviation enthusiasts, intended for flight simulators.
