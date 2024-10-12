@@ -13,3 +13,6 @@ __pycache__/
 
 # Pytest cache folder
 .pytest_cache/
+
+# Coverage reports
+.coverage
