@@ -6,8 +6,10 @@ from src.models.aircraft import Aircraft
 
 
 def test_load_json_aircraft_data():
+    manufacturer = "boeing"
     aircraft_icao = "b738"
-    file_path = f"src/aircraft_data/json_data/boeing/{aircraft_icao}/__init__.json"
+    file_path = ("src/aircraft_data/json_data/"
+                 + f"{manufacturer}/{aircraft_icao}/__init__.json")
 
     if not os.path.exists(file_path):
         pytest.fail(f"Test data file does not exist: {file_path}")
@@ -32,7 +34,7 @@ def test_file_not_found(mock_exists):
 def test_manufacturer_not_found():
     icao = "x123"
     with pytest.raises(
-        ValueError, match=f"Manufacturer not found for aircraft ICAO: {icao}"
+        ValueError, match=f"Manufacturer not found for aircraft: {icao}"
     ):
         Aircraft(icao)
 

@@ -1,0 +1,32 @@
+{
+    "aircraft": "b738",
+    "departure": {
+        "icao": "ULLI",
+        "latitude": 59.800301,
+        "longitude": 30.262501
+    },
+    "arrival": {
+        "icao": "UUEE",
+        "latitude": 55.972599,
+        "longitude": 37.4146
+    },
+    "parameters": {
+        "distance_km": 599,
+        "passengers_max": 184,
+        "block_fuel_kg": 6991,
+        "payload_kg": 19136,
+        "cargo_kg": 4784,
+        "zfw": {
+            "est": 60818,
+            "max": 62732
+        },
+        "tow": {
+            "est": 67809,
+            "max": 79016
+        },
+        "lw": {
+            "est": 65601,
+            "max": 66361
+        }
+    }
+}

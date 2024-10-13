@@ -32,20 +32,19 @@ class Aircraft:
 
         if manufacturer:
             model = self.aircraft_icao.lower()
-            file_path = f"src/aircraft_data/json_data/{manufacturer}/{model}/__init__.json"
+            file_path = (
+                "src/aircraft_data/json_data/"
+                + f"{manufacturer}/{model}/__init__.json"
+            )
 
             if os.path.exists(file_path):
                 with open(file_path, "r") as file:
                     return json.load(file)
             else:
                 raise ValueError(
-                    f"No data found for aircraft ICAO: {
-                        self.aircraft_icao
-                    }"
+                    f"No data found for aircraft ICAO: {self.aircraft_icao}"
                 )
         else:
             raise ValueError(
-                f"Manufacturer not found for aircraft ICAO: {
-                    self.aircraft_icao
-                }"
+                f"Manufacturer not found for aircraft: {self.aircraft_icao}"
             )

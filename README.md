@@ -1,10 +1,10 @@
 A project that allows you to plan a flight between two airports and obtain flight parameters for the selected aircraft.
 
-![version](https://img.shields.io/badge/version-3.0.1-blue)
+![version](https://img.shields.io/badge/version-4.0.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
-![coverage](https://img.shields.io/badge/coverage-98%25-green)
+![coverage](https://img.shields.io/badge/coverage-96%25-green)
 
-## Usage
+## Basic Usage
 ```ts
                                              ▏         Aircraft: b738 
                                              ▏         ULLI lat:59.800301, lon:30.262501
@@ -17,12 +17,19 @@ A project that allows you to plan a flight between two airports and obtain fligh
        aircraft_icao="b738"                  ▏         Cargo: 4784 kg
    )                                         ▏  
                                              ▏         ZFW est:60818, max:62732 
-                                             ▏         TOW est:67810, max:79016
+   flight.print_flight_params()              ▏         TOW est:67810, max:79016
                                              ▏         LW est:65602, max:66361
 ```
+## JSON Usage
+The project now includes a method called [save_to_json](src/models/flight.py), which allows to save flight parameters in a [JSON format](docs/exemple-route-b738-ULLI-to-UUEE.json).
+```ts
+flight.save_to_json()
+```
+
 ## Tree
 ```php
 .
+├── docs/                            # Directory for documentation and code examples.
 ├── src/                             # Main directory for the project's source code.
 │   ├── aircraft_data/               # Directory for aircraft data.
 │   │   ├── json_data/               # JSON files containing aircraft data.
@@ -37,6 +44,7 @@ A project that allows you to plan a flight between two airports and obtain fligh
 ├── Маkеfile                         # File for managing build automation.
 ├── poetry.lock                      # File listing the exact versions of dependencies.
 ├── pyproject.toml                   # Configuration file for Poetry and project metadata.
+├── setup.cfg                        # Configuration file for flake8 and isort.
 └── README.md                        # Documentation file explaining the project.
 ```
 

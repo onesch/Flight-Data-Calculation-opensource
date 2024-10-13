@@ -1,3 +1,6 @@
+# Ignore JSON files starting with route-
+route-*.json
+
 # Python cache
 __pycache__/
 *.py[cod]
