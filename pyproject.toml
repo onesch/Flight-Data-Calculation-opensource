@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flight-data-calculation"
-version = "4.0.1"
+version = "4.0.2"
 description = "A project for planning flights and calculating flight parameters between two airports."
 authors = ["onesch <vladimiravakov12345@gmail.com>"]
 license = "MIT"

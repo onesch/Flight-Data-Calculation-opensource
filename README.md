@@ -1,6 +1,6 @@
 A project that allows you to plan a flight between two airports and obtain flight parameters for the selected aircraft.
 
-![version](https://img.shields.io/badge/version-4.0.1-blue)
+![version](https://img.shields.io/badge/version-4.0.2-blue)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 ![coverage](https://img.shields.io/badge/coverage-96%25-green)
 ![version](https://img.shields.io/badge/python-3.12-blue)
@@ -21,6 +21,24 @@ The project now includes methods for both displaying and saving flight parameter
 ```py
 flight.print_flight_params()    # Outputs data to the console
 flight.save_to_json()           # Saves data to json file
+```
+
+## ✈️ Sample Flight Data Calculation:
+For example, for a flight between ULLI and UUEE using a b738 aircraft, the program can calculate the following parameters:
+```ts
+Aircraft: b738 
+ULLI lat:59.800301, lon:30.262501 
+UUEE lat:55.972599, lon:37.4146 
+Distance: 599 km
+ 
+Passengers [max]: 184 
+Block Fuel: 6992 kg 
+Payload: 19136 kg 
+Cargo: 4784 kg
+ 
+ZFW est:60818, max:62732 
+TOW est:67809, max:79016 
+LW est:65601, max:66361
 ```
 
 ## 🗂️ Tree
@@ -56,7 +74,7 @@ poetry install
 ```
 Run the example code:
 ```python
-poetry run python example_code.py
+make run
 ```
 
 ## 🧪 Tests
