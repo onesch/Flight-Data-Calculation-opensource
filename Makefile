@@ -1,4 +1,6 @@
-.PHONY: run
+test:
+	poetry pytest -vv
 
-run:
-	poetry run python example_code.py
+coverage:
+	poetry run coverage run -m pytest
+	poetry run coverage report

@@ -7,4 +7,4 @@ flight = Flight(
 )
 
 # flight.print_flight_params()
-flight.save_to_json()
+# flight.save_to_json()

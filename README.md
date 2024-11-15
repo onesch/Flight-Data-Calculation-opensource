@@ -1,33 +1,28 @@
 A project that allows you to plan a flight between two airports and obtain flight parameters for the selected aircraft.
 
-![version](https://img.shields.io/badge/version-4.0.0-blue)
+![version](https://img.shields.io/badge/version-4.0.1-blue)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 ![coverage](https://img.shields.io/badge/coverage-96%25-green)
-
+![version](https://img.shields.io/badge/python-3.12-blue)
 ## Basic Usage
-```ts
-                                             ▏         Aircraft: b738 
-                                             ▏         ULLI lat:59.800301, lon:30.262501
-                                             ▏         UUEE lat:55.972599, lon:37.4146 
-   from src.models.flight import Flight      ▏         Distance: 599 km
-                                             ▏
-   flight = Flight(                          ▏         Flight Passengers [max]: 184 
-       dep_icao="ulli",                      ▏         Block Fuel: 6992 kg 
-       arr_icao="uuee",                      ▏         Payload: 19136 kg
-       aircraft_icao="b738"                  ▏         Cargo: 4784 kg
-   )                                         ▏  
-                                             ▏         ZFW est:60818, max:62732 
-   flight.print_flight_params()              ▏         TOW est:67810, max:79016
-                                             ▏         LW est:65602, max:66361
+```py
+from src.models.flight import Flight
+
+flight = Flight(
+    dep_icao="ulli",
+    arr_icao="uuee",
+    aircraft_icao="b738"
+)                                               
 ```
-## JSON Usage
-The project now includes a method called [save_to_json](src/models/flight.py), which allows to save flight parameters in a [JSON format](docs/exemple-route-b738-ULLI-to-UUEE.json).
-```ts
-flight.save_to_json()
+## Оutput
+The project now includes methods for both displaying and saving flight parameters. For example, the [save_to_json](src/models/flight.py) method allows saving flight data in [JSON format](docs/exemple-route-b738-ULLI-to-UUEE.json).
+```php
+flight.print_flight_params()    # Outputs data to the console
+flight.save_to_json()           # Saves data to json file
 ```
 
 ## Tree
-```php
+```py
 .
 ├── docs/                            # Directory for documentation and code examples.
 ├── src/                             # Main directory for the project's source code.
@@ -63,7 +58,7 @@ poetry run python example_code.py
 ```
 
 ## Tests
-```python
+```py
 pytest -vv
 ```
 ```python
@@ -75,3 +70,5 @@ coverage report
 
 ## Note
 The project was created for aviation enthusiasts, intended for flight simulators.
+
+Make a `.env` file in which you need to specify your [personal API key](https://www.checkwxapi.com/) `CHECK_WX_API`.
