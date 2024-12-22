@@ -23,7 +23,7 @@ flight.print_flight_params()    # Outputs data to the console
 flight.save_to_json()           # Saves data to json file
 ```
 
-## ✈️ Sample Flight Data Calculation:
+## ✈️ Sample Flight Data Calculation
 For example, for a flight between ULLI and UUEE using a b738 aircraft, the program can calculate the following parameters:
 ```ts
 Aircraft: b738 
