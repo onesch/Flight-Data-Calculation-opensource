@@ -25,7 +25,7 @@ flight.save_to_json()           # Saves data to json file
 
 ## ✈️ Sample Flight Data Calculation
 For example, for a flight between ULLI and UUEE using a b738 aircraft, the program can calculate the following parameters:
-```ts
+```shell
 Aircraft: b738 
 ULLI lat:59.800301, lon:30.262501 
 UUEE lat:55.972599, lon:37.4146 
@@ -42,7 +42,7 @@ LW est:65601, max:66361
 ```
 
 ## 🗂️ Tree
-```php
+```shell
 .
 ├── docs/                            # Directory for documentation and code examples.
 ├── src/                             # Main directory for the project's source code.
@@ -65,23 +65,23 @@ LW est:65601, max:66361
 
 ## ⚙️ Installation
 Clone the repository:
-```ts
+```shell
 git clone https://github.com/onesch/Flight-Data-Calculation-opensource.git
 ```
 Install dependencies:
-```python
+```shell
 poetry install
 ```
 Run the example code:
-```python
+```shell
 make run
 ```
 
 ## 🧪 Tests
-```
+```shell
 make test
 ```
-```
+```shell
 make coverage
 ```
 
