@@ -2,7 +2,7 @@ run:
 	poetry run python example_code.py
 
 test:
-	poetry pytest -vv
+	poetry run pytest -vv
 
 coverage:
 	poetry run coverage run -m pytest

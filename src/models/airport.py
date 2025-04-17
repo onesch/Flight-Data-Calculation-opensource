@@ -1,53 +1,35 @@
-import requests
-import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
-API = os.getenv("CHECK_WX_API")
+# airport.py
 
 
 class Airport:
-    BASE_URL = "https://api.checkwx.com/metar/"
-
-    def __init__(self, icao: str) -> None:
+    def __init__(self, icao: str, api_client) -> None:
         """
         Initializes an Airport object and
-        retrieves data for the specified ICAO code.
+        retrieves data using the provided API client.
 
         :param icao: The ICAO code of the airport
+        :param api_client: An instance of a client
+        that implements get_metar(icao)
         """
         self.icao: str = icao
         self.icao_code: str = "Unknown"
         self.latitude: float = 0.0
         self.longitude: float = 0.0
+        self.api_client = api_client
         self.get_data()
 
     def get_data(self):
         """
-        Fetches airport data from the CheckWX API and
-        populates the airport attributes.
-        Raises an exception if the airport does not exist or
-        if the request fails.
+        Fetches airport data using the provided API client
+        and populates the attributes.
         """
-        url = f"{self.BASE_URL}{self.icao}/decoded"
-        res = requests.get(url, headers={"X-API-Key": API})
-
-        if res.status_code == 200:
-            data = res.json()
-            if "data" in data and len(data["data"]) > 0:
-                self.icao_code = data["data"][0].get("icao", "Unknown")
-                coords: list[float] = data["data"][0]["station"]["geometry"][
-                    "coordinates"
-                ]
-                self.longitude, self.latitude = coords[0], coords[1]  # !
-            else:
-                raise ValueError(
-                    f"The airport with ICAO code {self.icao} does not exist."
-                )
+        data = self.api_client.get_metar(self.icao)
+        if "data" in data and len(data["data"]) > 0:
+            airport_data = data["data"][0]
+            self.icao_code = airport_data.get("icao", "Unknown")
+            coords = airport_data["station"]["geometry"]["coordinates"]
+            self.longitude, self.latitude = coords
         else:
             raise ValueError(
-                f"Error retrieving data for {self.icao}: {
-                    res.status_code
-                } - {res.text}"
+                f"The airport with ICAO code {self.icao} does not exist."
             )

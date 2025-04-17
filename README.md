@@ -1,8 +1,8 @@
 A project that allows you to plan a flight between two airports and obtain flight parameters for the selected aircraft.
 
-![version](https://img.shields.io/badge/version-4.0.3-blue)
+![version](https://img.shields.io/badge/version-4.1.3-blue)
 ![license](https://img.shields.io/badge/license-MIT-blue)
-![coverage](https://img.shields.io/badge/coverage-96%25-green)
+![coverage](https://img.shields.io/badge/coverage-97%25-green)
 ![version](https://img.shields.io/badge/python-3.12-blue)
 ![codeclimate](https://img.shields.io/badge/codeclimate-A-52ffc5)
 

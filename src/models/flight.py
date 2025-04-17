@@ -1,8 +1,11 @@
 from math import radians, sin, cos, sqrt, atan2
+from models.api_client import CheckWXClient
 from src.models.airport import Airport
 from src.models.aircraft import Aircraft
 import json
 from typing import Any
+
+client = CheckWXClient()
 
 
 class Flight:
@@ -24,8 +27,8 @@ class Flight:
     def __init__(self, dep_icao: str, arr_icao: str, aircraft_icao: str):
         self.aircraft = Aircraft(aircraft_icao)
         self.aircraft_data = self.aircraft.data[self.aircraft.aircraft_icao]
-        self.dep_airport = Airport(dep_icao)
-        self.arr_airport = Airport(arr_icao)
+        self.dep_airport = Airport(dep_icao, api_client=client)
+        self.arr_airport = Airport(arr_icao, api_client=client)
         self.distance_km: float = 0.0
         self.block_fuel: float = 0.0
         self.payload: int = 0
